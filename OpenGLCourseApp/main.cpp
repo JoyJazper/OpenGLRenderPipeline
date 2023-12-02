@@ -94,10 +94,10 @@ void CreateTriangle()
 			
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		//glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		
-	glBindVertexArray(0);
 
 	
 }
@@ -268,7 +268,7 @@ int main()
 
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		//glClear(GL_COLOR_BUFFER_BIT | GL);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shader);
 
