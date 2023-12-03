@@ -13,6 +13,9 @@ public:
 	Shader();
 
 	void CreateFromString(const char* vertexCode, const char* fragmentCode);
+	void CreateFromFile(const char* vertexCodeLocation, const char* fragmentCodeLocation);
+
+	std::string ReadFile(const char* fileLocation);
 
 	GLuint GetProjectionLocation();
 	GLuint GetModelLocation();
