@@ -15,18 +15,15 @@
 #include "Shader.h"
 #include "View.h"
 
-// Window dimensions
-const GLint WIDTH = 800, HEIGHT = 600;
 const float toRadians = 3.14159265f / 180.0f;
 
+// Window dimensions
+const GLint WIDTH = 800, HEIGHT = 600;
 View mainWindow;
+int fps = 0;
 
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
-
-//GLuint VAO, VBO, IBO, shader, uniformModel, uniformProjection;
-
-int fps = 0;
 
 glm::mat4 model = glm::mat4(1.0f);
 
