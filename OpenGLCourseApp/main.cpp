@@ -83,9 +83,6 @@ int main()
 		// Get + Handle user input event
 		glfwPollEvents();
 
-		//printf("ERNOS Processor cycle : %d \n ", process++);
-		
-
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -93,8 +90,6 @@ int main()
 		shaderList[0].UseShader();
 		uniformModel = shaderList[0].GetModelLocation();
 		uniformProjection = shaderList[0].GetProjectionLocation();
-
-		//glUseProgram(0);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
@@ -110,6 +105,5 @@ int main()
 		// uses 2 buffers one to draw in and one to show
 		mainWindow.swapBuffers();
 	}
-
 	return 0;
 }
