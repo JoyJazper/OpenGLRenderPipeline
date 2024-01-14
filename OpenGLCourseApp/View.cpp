@@ -3,11 +3,19 @@
 View::View() {
 	width = 800;
 	height = 600;
+
+	for (size_t i = 0; i < 1024; i++) {
+		keys[i] = 0;
+	}
 }
 
 View::View(GLint windowWidth, GLint windowHeight) {
 	width = windowWidth;
 	height = windowHeight;
+
+	for (size_t i = 0; i < 1024; i++) {
+		keys[i] = 0;
+	}
 }
 
 int View::initialise() {
@@ -42,6 +50,11 @@ int View::initialise() {
 	// Set context for GLEW to use
 	glfwMakeContextCurrent(mainWindow);
 
+	//Handle key and mouse
+	createCallbacks();
+
+	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 	// Allow modern extension features
 	glewExperimental = GL_TRUE;
 
@@ -57,6 +70,68 @@ int View::initialise() {
 	// Create Viewport
 	glViewport(0, 0, bufferWidth, bufferHeight);
 
+	glfwSetWindowUserPointer(mainWindow, this);
+
+}
+
+void View::createCallbacks() 
+{
+	glfwSetKeyCallback(mainWindow, handleKeys);
+	glfwSetCursorPosCallback(mainWindow, handleMouse);
+}
+
+GLfloat View::getXChange() 
+{
+	GLfloat theChange = xChange;
+	xChange = 0.0f;
+	return theChange;
+}
+
+GLfloat View::getYChange()
+{
+	GLfloat theChange = yChange;
+	yChange = 0.0f;
+	return theChange;
+}
+
+void View::handleKeys(GLFWwindow* view, int key, int code, int action, int mode) 
+{
+	View* theView = static_cast<View*>(glfwGetWindowUserPointer(view));
+
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) 
+	{
+		glfwSetWindowShouldClose(view, GL_TRUE);
+	}
+
+	if (key >= 0 && key < 1024) {
+		if (action == GLFW_PRESS) {
+			theView->keys[key] == true;
+			//printf("Pressed: %d\n", key);
+		}
+		else if (action == GLFW_RELEASE) {
+			theView->keys[key] == false;
+			//printf("Released: %d\n", key);
+		}
+	}
+}
+
+void View::handleMouse(GLFWwindow* view, double xPos, double yPos) 
+{
+	View* theView = static_cast<View*>(glfwGetWindowUserPointer(view));
+
+	if (theView->mouseFirstMoved) {
+		theView->lastX = xPos;
+		theView->lastY = yPos;
+		theView->mouseFirstMoved = false;
+	}
+
+	theView->xChange = xPos - theView->lastX;
+	theView->yChange = theView->lastY - yPos;
+
+	theView->lastX = xPos;
+	theView->lastY = yPos;
+
+	//printf("x: %.6f, y: %.6f\n", theView->xChange, theView->yChange);
 }
 
 View::~View() {

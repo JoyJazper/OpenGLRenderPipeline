@@ -21,6 +21,8 @@ const float toRadians = 3.14159265f / 180.0f;
 const GLint WIDTH = 800, HEIGHT = 600;
 View mainWindow;
 int fps = 0;
+float curAngle = 0.0f;
+float triOffset = 0.0f;
 
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
@@ -80,6 +82,11 @@ int main()
 		// Get + Handle user input event
 		glfwPollEvents();
 
+		curAngle += 1.0f;
+		if (curAngle >= 360.0f) {
+			curAngle -= 360.0f;
+		}
+
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -90,7 +97,7 @@ int main()
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
-		//model = glm::rotate(model, curAngle * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, curAngle * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		//model = glm::scale(model, glm::vec3(curSize, curSize, 1.0f));
 		//glUniform1f(uniformModel, triOffset);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
