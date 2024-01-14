@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;$(SolutionDir)/ExternalDir/GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;$(SolutionDir)/ExternalDir/GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;$(SolutionDir)/ExternalDir/GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ExternalDir/GLFW/glfw-3.3.8.bin.WIN32/include;$(SolutionDir)/ExternalDir/GLEW/glew-2.1.0/include;$(SolutionDir)/ExternalDir/GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)/ExternalDir/GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)/ExternalDir/GLM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -151,6 +152,7 @@
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Shader.h" />

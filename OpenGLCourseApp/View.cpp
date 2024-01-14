@@ -7,6 +7,12 @@ View::View() {
 	for (size_t i = 0; i < 1024; i++) {
 		keys[i] = 0;
 	}
+
+	lastX = 0.0f;
+	lastY = 0.0f;
+	xChange = 0.0f;
+	yChange = 0.0f;
+	mouseFirstMoved = false;
 }
 
 View::View(GLint windowWidth, GLint windowHeight) {
@@ -16,6 +22,12 @@ View::View(GLint windowWidth, GLint windowHeight) {
 	for (size_t i = 0; i < 1024; i++) {
 		keys[i] = 0;
 	}
+
+	lastX = 0.0f;
+	lastY = 0.0f;
+	xChange = 0.0f;
+	yChange = 0.0f;
+	mouseFirstMoved = false;
 }
 
 int View::initialise() {
@@ -105,11 +117,11 @@ void View::handleKeys(GLFWwindow* view, int key, int code, int action, int mode)
 
 	if (key >= 0 && key < 1024) {
 		if (action == GLFW_PRESS) {
-			theView->keys[key] == true;
+			theView->keys[key] = true;
 			//printf("Pressed: %d\n", key);
 		}
 		else if (action == GLFW_RELEASE) {
-			theView->keys[key] == false;
+			theView->keys[key] = false;
 			//printf("Released: %d\n", key);
 		}
 	}
