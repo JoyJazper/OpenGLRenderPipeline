@@ -67,6 +67,24 @@ void Camera::keyControl(bool* keys, GLfloat deltaTime)
 	}
 }
 
+void Camera::mouseControl(GLfloat xChange, GLfloat yChange)
+{
+	xChange *= turnSpeed;
+	yChange *= turnSpeed;
+
+	yaw += xChange;
+	pitch += yChange;
+
+	if (pitch > 89.0f) {
+		pitch = 89.0f;
+	}
+	if (pitch < -89.0f) {
+		pitch = -89.0f;
+	}
+
+	Update();
+}
+
 Camera::~Camera() 
 {
 

@@ -94,14 +94,14 @@ void View::createCallbacks()
 
 GLfloat View::getXChange() 
 {
-	GLfloat theChange = xChange;
+	GLfloat theChange = xChange/2;
 	xChange = 0.0f;
 	return theChange;
 }
 
 GLfloat View::getYChange()
 {
-	GLfloat theChange = yChange;
+	GLfloat theChange = yChange/2;
 	yChange = 0.0f;
 	return theChange;
 }

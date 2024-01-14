@@ -96,6 +96,7 @@ int main()
 		glfwPollEvents();
 
 		camera.keyControl(mainWindow.getKeys(), deltaTime);
+		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
 
 		curAngle += 1.0f;
 		if (curAngle >= 360.0f) {
