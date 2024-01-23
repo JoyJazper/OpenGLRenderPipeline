@@ -26,6 +26,11 @@ Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLf
 	Update();
 }
 
+glm::vec3 Camera::GetCameraPosition()
+{
+	return position;
+}
+
 glm::mat4 Camera::calculateViewMatrix()
 {
 	return glm::lookAt(position, position + front, up);
@@ -64,6 +69,16 @@ void Camera::keyControl(bool* keys, GLfloat deltaTime)
 	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
 	{
 		position += right * velocity;
+	}
+
+	if (keys[GLFW_KEY_Q])
+	{
+		position += worldUp * velocity;
+	}
+
+	if (keys[GLFW_KEY_E])
+	{
+		position -= worldUp * velocity;
 	}
 }
 

@@ -18,8 +18,8 @@ public:
 	//void UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation);
 
 	// with diffusion
-	void UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation, 
-		GLfloat diffuseIntensityLocation, GLfloat directionLocation);
+	void UseLight(unsigned int ambientIntensityLocation, unsigned int ambientColourLocation,
+		unsigned int diffuseIntensityLocation, unsigned int directionLocation);
 
 	~Light();
 

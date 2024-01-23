@@ -2,13 +2,16 @@
 
 layout(location = 0) in vec3 pos;
 layout(location = 1) in vec2 tex;
-layout(location = 1) in vec3 norm;
+layout(location = 2) in vec3 norm;
 
 out vec4 vCol;
 out vec2 texCoord;
-// test flat normal - one normal per triangle and no interpolation
-//flat out vec3 Normal;
-out vec3 Normal;
+out vec3 fragPos;
+out vec3 normal;
+
+// test flat normal - one normal per triangle and no interpolation - donot use it (performance intense)
+// flat out vec3 normal;
+
 uniform mat4 model;										      
 uniform mat4 projection;
 uniform mat4 view;
@@ -20,5 +23,7 @@ void main()
 
 	texCoord = tex;
 
-	Normal = mat3(transpose(inverse(model))) * norm;
+	normal = mat3(transpose(inverse(model))) * norm;
+
+	fragPos = (model * vec4(pos, 1.0)).xyz;
 }

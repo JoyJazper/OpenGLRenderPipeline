@@ -3,7 +3,7 @@
 Light::Light() 
 {
 	colour = glm::vec3(1.0f, 1.0f, 1.0f);
-	ambientIntensity = 1;
+	ambientIntensity = 1.0f;
 
 	direction = glm::vec3(0.0f, -1.0f, 0.0f);
 	diffuseIntensity = 0.0f;
@@ -32,18 +32,18 @@ Light::Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity,
 	glUniform1f(ambientIntensityLocation, ambientIntensity);
 }*/
 
-void Light::UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation, 
-	GLfloat diffuseIntensityLocation, GLfloat directionLocation)
+void Light::UseLight(unsigned int ambientIntensityLocation, unsigned int ambientColourLocation,
+	unsigned int diffuseIntensityLocation, unsigned int directionLocation)
 {
 	// set values for a variable in the shader. 2 arguments are ID's of the 2 variables.
 	glUniform3f(ambientColourLocation, colour.x, colour.y, colour.z);
 	glUniform1f(ambientIntensityLocation, ambientIntensity);
+
 	glUniform3f(directionLocation, direction.x, direction.y, direction.z);
 	glUniform1f(diffuseIntensityLocation, diffuseIntensity);
 }
 
 Light::~Light()
 {
-	colour = glm::vec3(1.0f, 1.0f, 1.0f);
-	ambientIntensity = 0;
+	
 }

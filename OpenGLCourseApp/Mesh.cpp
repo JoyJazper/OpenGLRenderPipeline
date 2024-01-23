@@ -20,7 +20,6 @@ void Mesh::CreateMesh(GLfloat* vertices, unsigned int* indices, unsigned int num
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices[0]) * numOfVertices, vertices, GL_STATIC_DRAW);
 
 	// Attribes are components of that mesh.
@@ -54,6 +53,10 @@ void Mesh::RenderMesh() {
 
 void Mesh::ClearMesh() {
 	
+	if (IBO != 0) {
+		glDeleteBuffers(1, &IBO);
+		IBO = 0;
+	}
 
 	if (VBO != 0) {
 		glDeleteBuffers(1, &VBO);
@@ -63,11 +66,6 @@ void Mesh::ClearMesh() {
 	if (VAO != 0) {
 		glDeleteVertexArrays (1, &VAO);
 		VAO = 0;
-	}
-
-	if (IBO != 0) {
-		glDeleteBuffers(1, &IBO);
-		IBO = 0;
 	}
 
 	indexCount = 0;
