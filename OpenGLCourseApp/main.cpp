@@ -170,7 +170,7 @@ int main()
 	shiny = Material(1.0f, 32);
 	dull = Material(0.3f, 4);
 	
-	mainLight = Light(1.0f, 1.0f, 1.0f, 0.1f, 
+	mainLight = Light(1.0f, 1.0f, 1.0f, 0.2f, 
 		0.0f, 0.0f, -1.0f, 0.3f);
 
 	GLuint uniformProjection = 0;
