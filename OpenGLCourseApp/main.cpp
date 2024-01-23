@@ -20,12 +20,13 @@
 #include "Camera.h"
 #include "Texture.h"
 #include "Light.h"
+#include "DirectionLight.h"
 #include "Material.h"
 
 const float toRadians = 3.14159265f / 180.0f;
 
 // Window dimensions
-const GLint WIDTH = 800, HEIGHT = 600;
+const GLint WIDTH = 1920, HEIGHT = 1080;
 View mainWindow;
 int fps = 0;
 float curAngle = 0.0f;
@@ -42,7 +43,7 @@ Texture dirt;
 Material shiny;
 Material dull;
 
-Light mainLight;
+DirectionLight directionLight;
 
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
@@ -170,8 +171,9 @@ int main()
 	shiny = Material(1.0f, 32);
 	dull = Material(0.3f, 4);
 	
-	mainLight = Light(1.0f, 1.0f, 1.0f, 0.2f, 
-		0.0f, 0.0f, -1.0f, 0.3f);
+	directionLight = DirectionLight(1.0f, 1.0f, 1.0f,   //colour     
+									0.2f, 0.3f,			//intensities ambient and diffuse
+									0.0f, 0.0f, -1.0f); //direction
 
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
@@ -220,7 +222,7 @@ int main()
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
-		mainLight.UseLight(uniformAmbientIntensity, uniformAmbientColour, uniformDiffuseIntensity, uniformDirection);
+		directionLight.UseDirectionLight(uniformAmbientIntensity, uniformAmbientColour, uniformDiffuseIntensity, uniformDirection);
 
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));

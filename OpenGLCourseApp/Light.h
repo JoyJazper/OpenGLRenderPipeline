@@ -11,23 +11,16 @@ public:
 	//Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity);
 
 	// dIntensity : diffuse intensity || with Diffusion
-	Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity,
-		GLfloat xDir, GLfloat yDir, GLfloat zDir, GLfloat dIntensity);
+	Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity, GLfloat dIntensity);
 
 	// without diffusion || used to assign light data in the shader
 	//void UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation);
 
-	// with diffusion
-	void UseLight(unsigned int ambientIntensityLocation, unsigned int ambientColourLocation,
-		unsigned int diffuseIntensityLocation, unsigned int directionLocation);
-
 	~Light();
 
-private:
+protected:
 	glm::vec3 colour;
 	GLfloat ambientIntensity;
-
-	glm::vec3 direction;
 	GLfloat diffuseIntensity;
 };
 
